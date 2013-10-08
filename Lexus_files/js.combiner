@@ -5352,18 +5352,8 @@ $(window).scroll(function(e) {
                 var footerInView = false;
                 var $theFooter = $('.cf-footer');
                 // Is the footer more than 50% in view?
-                if (scrollTop + ($(window).height() / 2) >= $theFooter.position().top) {
-                    footerInView = true;
-                    foundId = settings.footerID;
-                    // Or are we within 20px of the page bottom?
-                } else if (scrollTop + $(window).height() >= $(document).height() - 20) {
-                    footerInView = true;
-                    foundId = settings.footerID;
-                }
-if (settings.debug) {
-                    console.log("scrollTop: " + scrollTop + " $this.first().position().top: " + $this.first().position().top);
-                }
-// introduction checks
+   
+   // introduction checks
                 var introInView = false;
                 if (scrollTop <= $this.first().position().top - 40) {
                     introInView = true;
@@ -17107,117 +17097,7 @@ var error = function(defer, opts) {
             }
         };
     };
-$.geo = function(options) {
-        var opts = $.extend({}, defaults, options),
-			defer = $.Deferred();
-        if (geo) {
-            geo.getCurrentPosition(succ(defer, opts), error(defer, opts), opts);
-        }
-        else {
-            error(defer, opts)();
-        }
-        return defer.promise();
-    };
-})(window.jQuery);
-/* /end file: E:\tridionweb\doc\_MKG_LEX_V10_INC\main\sys\inc\js\jquery.geo.js */
-/* start file: E:\tridionweb\doc\_MKG_LEX_V10_INC\main\sys\inc\js\jquery.googleMap.js */
-;(function($) {
-// global settings
-    var settings = {
-        mapOptions: {
-            zoom: 4,
-            center: { lat: 5.480712, lng: -2.234376 }, //random defaults
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            draggable: true,
-            scrollwheel: false
-        }
-    };
-var mapStyle = [
-        { featureType: 'water', stylers: [{ saturation: -100}] },
-	    { featureType: "road.highway", stylers: [{ hue: "#A2C4EA"}] },
-	    { featureType: "road.arterial", stylers: [{ hue: "#A2C4EA"}] },
-	    { featureType: "road.local", stylers: [{ hue: "#A2C4EA"}] },
-	    { featureType: "poi.park", stylers: [{ saturation: -100}] },
-	    { featureType: "landscape.natural", stylers: [{ saturation: -100}] },
-	    { featureType: "poi.attraction", stylers: [{ saturation: -100}] },
-	    { featureType: "road.highway", elementType: "labels", stylers: [{ hue: "#A1CCEE", gamma: 9.79}] },
-	    { featureType: "road.arterial", elementType: "labels", stylers: [{ saturation: -100}] },
-	    { featureType: "road.local", stylers: [{ saturation: -100}] }
-    ];
-var methods = {
-        init: function(options) {
-            return this.each(function() {
-                var ls = $.extend(true, {}, settings, options); // local settings
-                var $this = $(this);
-ls.mapOptions.center = new google.maps.LatLng(ls.mapOptions.center.lat, ls.mapOptions.center.lng);
-                var map = new google.maps.Map(this, ls.mapOptions)
-                map.setOptions({ styles: mapStyle });
-$this.data("map", map);
-            });
-        },
-        addImageMarker: function(dealer, info, fn) {
-            return this.each(function() {
-                var $this = $(this);
-                var p1 = new google.maps.Point(0, 0);
-                var p2 = new google.maps.Point(18, 44);
-                var p3 = new google.maps.Point(31, 33);
-                var shadow = new google.maps.MarkerImage('/img/glb/lexus-pin-shadow_tcm864-1157023.png', new google.maps.Size(47, 35), p1, p3);
-                var xy;
-                if (typeof (dealer.lng) == 'undefined')
-                    xy = new google.maps.LatLng(dealer.lat, dealer.lon);
-                else
-                    xy = new google.maps.LatLng(dealer.lat, dealer.lng);
-                var image = new google.maps.MarkerImage('/img/glb/lexus-pin_tcm864-1157022.png', new google.maps.Size(36, 44), p1, p2);
-var m = $(this).data("map");
-var marker = new google.maps.Marker({ map: m, position: xy, icon: image, shadow: shadow, title: dealer.name })
-var $boxText = $('<div class="label"><span class="arrow"><span>' + info.content + '</span></span></div>');
-                $boxText.css('visibility', 'hidden').appendTo($this);
-                var w = $boxText.outerWidth(true);
-                $boxText.detach().css('visibility', 'visible');
-                if (info.content) {
-                var myOptions = {
-                    boxClass: 'label'
-	                , content: $(".arrow", $boxText)[0]
-	                , alignBottom: true
-	                , disableAutoPan: false
-	                , maxWidth: 0
-	                , boxStyle: { width: w + "px" }
-	                , pixelOffset: new google.maps.Size(-((w / 2)), -55)
-	                , zIndex: null
-	                , closeBoxMargin: "0"
-	                , closeBoxURL: ""
-	                , infoBoxClearance: new google.maps.Size(1, 1)
-	                , isHidden: false
-	                , pane: "floatPane"
-	                , enableEventPropagation: true
-                };
-var infobox = new InfoBox(myOptions);
-google.maps.event.addListener(marker, "mouseover", function(e) {
-                    infobox.open(m, marker);
-                });
-google.maps.event.addListener(marker, "mouseout", function(e) {
-                    infobox.close();
-                });
-if (typeof (fn) === "function") {
-                    fn.call(marker);
-                }
-                }
-            });
-        },
-        addMarker: function(latLng) {
-            return this.each(function() {
-var xy = new google.maps.LatLng(latLng.lat, latLng.lng);
-                var m = $(this).data("map");
-                var marker = new google.maps.Marker({ map: m, position: xy });
-});
-        },
-        setCenter: function(latLng) {
-            return this.each(function() {
-                var m = $(this).data("map");
-                m.setCenter(new google.maps.LatLng(latLng.lat, latLng.lng));
-            });
-        } 
-    };
+
 $.fn.googleMap = function(method) {
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     <script src="./Lexus_files/modernizr-2.0.6.min.js"></script>
 	
 	<link href="http://www.flotcharts.org/flot/examples/examples.css" rel="stylesheet" type="text/css">
@@ -170,11 +170,6 @@
 			<h3 id="hoverdata" style='color:black'></h3>
 		
 		</div>
-		<style>
-		#tooltip{
-			z-index: 200;
-		}
-</style>
 		
 	
     
@@ -204,6 +199,12 @@
 
 		<style>
 		
+		
+		
+		#tooltip{
+			z-index: 200;
+		}
+		
 	    #close{
 	    	 position: absolute;
 			 z-index: 200;
@@ -212,10 +213,28 @@
 	    }
 		
 		.play-icon{
-			
-    	 position: absolute;
+			position: absolute;
 		 z-index: 200;
 		}
+		
+		.pause-icon{
+			
+			position: absolute;
+		 z-index: 200;
+		 width: 90px;
+		 height: 90px;
+		 display: block;
+		 position: absolute;
+		 top: 50%;
+		 left: 50%;
+		 margin: 0px 0 0 -100px;
+		 background: url('http://education2.freeformers.com/maxbye/whitedog/img/cl-nuggets-sprite_tcm864-1140422.png') no-repeat right -880px;
+		}
+		
+		.soundPause{
+			margin: -17px 0 0 -45px;
+		}
+		
 		
 		.descript{
 			color:white;
@@ -234,32 +253,148 @@
 			right: 50px;
 			top: 20px;
 		}
+		
+		.window-icon{
+			z-index: 200;
+			width: 90px;
+			height: 90px;
+			display: block;
+			position: absolute;
+			top: 37%;
+			left: 60%;
+			opacity: 0.9;
+			margin: 0px 0 0 -100px;
+			background: url('http://education2.freeformers.com/maxbye/whitedog/img/newWindow.png') no-repeat right -880px;	
+		}
+		
+		.pause-icon:hover {
+		background-position: right -788px;	
+		}
+		
+		a:hover .window-icon {
+		background-position: right -788px;
+		}
+		
+		
+		
+		/* JQuery Switch CSS options */
+		.backWindow{
+		  position: absolute;
+		  left: 65px;
+		  top: 240px;
+		  }
+		  
+		  .backWindowImage {
+		  height: 150px;
+		  width: 250px;
+		  background-image: url('http://family.freeformers.com/max/whitedog/img/backWindow.png');
+		  background-size: 90%;
+		  background-position: 140% 30%;
+		  background-repeat: no-repeat;
+		  }
+		  
+		  .backWindowImage:hover{
+		    background-image:url('http://family.freeformers.com/max/whitedog/img/backWindowHover.png');
+		  }
+		  
+		.frontTitle{
+		  padding-left: 10px;
+		  position: absolute;
+		  float: left;
+		  background-color: black;
+		  color: white;
+		  text-align: left;
+		  }
+
+
+		.backCover{
+		height: 365px; 
+		width: 550px; 
+		margin-left: -100px; 
+		background-color: black; 
+		opacity: 0.7; 
+		position: absolute;
+		}
+
+		.backText{
+		  color: white;
+		position: absolute;
+		padding-left: 10px; 
+		width: 310px;
+		} 
+
+		
+        .panel { 
+            position: relative;
+            font-size: .8em;
+            -webkit-perspective: 600px;
+            -moz-perspective: 600px;
+        }
+        /* -- make sure to declare a default for every property that you want animated -- */
+        /* -- general styles, including Y axis rotation -- */
+        .panel .front {
+            position: absolute;
+            top: 0;
+            z-index: 900;
+            width: inherit;
+            height: inherit;
+            text-align: center;
+            -webkit-transform: rotateX(0deg) rotateY(0deg);
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden;
+            -moz-transform: rotateX(0deg) rotateY(0deg);
+            -moz-transform-style: preserve-3d;
+            -moz-backface-visibility: hidden;
+            /* -- transition is the magic sauce for animation -- */
+            -o-transition: all .4s ease-in-out;
+            -ms-transition: all .4s ease-in-out;
+            -moz-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+        .panel.flip .front {
+            z-index: 900;
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+        }
+        .panel .back {
+            position: absolute;
+            top: 0;
+            z-index: 800;
+            width: inherit;
+            height: inherit;
+            -webkit-transform: rotateY(-180deg);
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden;
+ 
+            -moz-transform: rotateY(-180deg);
+            -moz-transform-style: preserve-3d;
+            -moz-backface-visibility: hidden;
+            /* -- transition is the magic sauce for animation -- */
+            -o-transition: all .4s ease-in-out;
+            -ms-transition: all .4s ease-in-out;
+            -moz-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+        .panel.flip .back {
+            z-index: 1000;
+            -webkit-transform: rotateX(0deg) rotateY(0deg);
+            -moz-transform: rotateX(0deg) rotateY(0deg);
+        }
+		
+		/* /JQuery Switch CSS options */
+		
 		</style>		
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
 
 
   <script type="text/javascript" src="http://w.soundcloud.com/player/api.js"></script>
 
 
+
 <script type="text/javascript">
-
-  $(function(){
-	  
-$(".btn1").live("click",function(){
- 
-  $('.sorry').toggle(250);
-  $("#test").append("<div id='outerdiv'><a id='close'><span class='play-icon'></span></a><iframe id='inneriframe' src='http://www.stereomood.com/mood/working'  >If you see this message, it means that your browser doesn't support frames or they are disabled. You can access the information shown in this frame here: <a href='http://www.stereomood.com/mood/working'>StereoMood Playlist for bad feels </a></iframe></div>");
-
-});
-
-$("#close").live("click",function(){
-   $('.sorry').toggle(250);
-   $("#outerdiv").remove();
-   console.log('hello');
-});
-
-});
 
 // YOUTUBE API
 
@@ -296,78 +431,460 @@ function callPlayer(frame_id, func, args) {
       var widget1 = SC.Widget("so");
 
 	    $("#playYouTube").click(function() {
-		  $(".playButton").remove();
+		  $("#playYouTube").remove();
+		  $(".videoCover").remove();
+		  
 	    }); 
 
 
         $("#playSound").click(function() {
           widget1.play();
-		  $(".playButton").remove();
-		  $(".pauseButton").append("<button>test</button>");
-		  
+		  $(".playButton").css( "visibility", "hidden" );
+		  $(".pauseButton").append("<span class='pause-icon soundPause'></span>");
+		  $(".pauseButton").css( "visibility", "visible" );
 
       });  
       $("#stopSound").click(function() {
           widget1.pause();
-      });      
+		  $(".pauseButton").css( "visibility", "hidden" );
+		  $(".playButton").css( "visibility", "visible" );
+		  
+		  
+		  
+      });
+	  
+	  
+
+	  
+	  $(".soundMusic").click(function(){
+
+	  $('.soundCover').toggle(250);
+//	   $(".test").show();
+//	  $(".test").append("<a id='close'><span class='pause-icon'></span></a><iframe width='100%' height='100%' src='http://stressreliefpig.com/uploads/woodoo_boss.swf'  >If you see this message, it means that your browser doesn't support frames or they are disabled. You can access the information shown in this frame here: <a href='http://www.stereomood.com/mood/working'>StereoMood Playlist for bad feels </a></iframe>");
+
+	  });
+	  
+	  
+	  $("#close").live("click",function(){
+	     $('.soundCover').toggle(250);
+//	     $(".test").hide();
+	  });
+	  
+	  
+	        
     });
 
 
 	
 
-// SOUNDCLOUD API
+// Melancholy iFrame
+  $(function(){
+	  
+$(".play-icon").click(function(){
+
+$('.moodCover').toggle(250);
+
+$(".moodShow").append("<a id='close'><span class='pause-icon'></span></a><iframe width='650px' height='360px' src='http://www.stereomood.com/mood/melancholy'  >If you see this message, it means that your browser doesn't support frames or they are disabled. You can access the information shown in this frame here: <a href='http://www.stereomood.com/mood/melancholy'>StereoMood Playlist for bad feels </a></iframe>");
+
+});
+	  
+	  
+$("#close").live("click",function(){
+   $('.moodCover').toggle(250);
+   $(".moodShow").empty();
+});
+
+
+
+
+
+
+
+$('.hover').hover(function(){
+    $(this).addClass('flip');
+},function(){
+    $(this).removeClass('flip');
+});
+
+
+
+
+});
+
+
+// Switches working http://jsbin.com/isUTadI/2/edit
 	
 </script>
 
 
 
-
-<!-- UNHAPPY -->
-<div class='unhappy'>
-<article class="item-flush Steps-item isotope-item isotope-hidden">
-	
-	<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
-		
-
-		
-		
+<!-- MISERABLE -->
 
 
-		<div id='test'></div>
-		<div class='btn1' style='position: absolute; width:670px; height: 660px; background: white;'>
-		
-			<img src="http://www.italianangels.net/public/upload//Loghi_Aziende/stereomood%20logo.png" style='margin-top:40px'>
-		
-		</div>	
-	
-			
-	<div class='sorry'>
-		<a>
-	        <span class="play-icon btn1"></span>
-			<div class="bottom-slide">		
-		    <p class='descript'> In the dumps? Here's some calming music to help you out. </p>
-			</div>
-		</a>
-	</div>
 
-	</section>
-	</article>
+
+	<!-- /SoundCloud Description -->
 	
-	
-	
-	
-	
+	<!-- Penzu-->
 	<article class="item-flush Steps-item isotope-item isotope-hidden">
 		<section class="promo-content height2 flush-grid-8">
 		
+		
+			
+		
+		
+			<a href="https://penzu.com/p" target="_blank" >
+					 <span class="window-icon" style='opacity: 0.5;'></span>
+				<div style='width:670px; height: 660px; background: rgb(243,243,243);'>
+				<img src="http://blog.penzu.com/wp-content/uploads/2013/03/legacy.jpg" width='100%'>
+				</div>
+			</a>
+			<div class="bottom-slide">
+				<a href="https://penzu.com/p" target='_blank'>
+					<p class='descript' style='margin-top:0px;'>
+					Get your feelings out on digital paper. <br>
+					Penzu is a free, confidential diary for you to express your inner turmoil.
+					</p>
+				</a>
+			</div>
+			
+		</section>
+	</article>
+	<!-- /Penzu -->
+	
+	<!-- Offline Self Help Description -->
+	<article class="item-flush Steps-item isotope-item isotope-hidden">
+		<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
+			<a href="http://www.depressionalliance.org/how-we-can-help/self-help-groups.php" target="_blank" >
+					 <span class="window-icon" style='opacity: 0.5;'></span>
+				<div style='width:670px; height: 660px; background: rgb(243,243,243);'>
+				<img src="http://education2.freeformers.com/maxbye/whitedog/img/groupSupport.png">
+				</div>
+			</a>
+			<div class="bottom-slide">
+				<a href="http://www.depressionalliance.org/how-we-can-help/self-help-groups.php" target='_blank'>
+					<p class='descript' style='margin-top:0px;'>
+					Feeling really low? Don't feel alone. <br> Meet like minded people in offline groups around London.
+					</p>
+				</a>
+			</div>
+		</section>
+	</article>
+   <!-- /Offline Self Help Description -->
+	
+	
+<!-- EleFriends -->	
+	<article class="item-flush Steps-item isotope-item isotope-hidden">
+		<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
+			<a href="http://elefriends.org.uk/" target="_blank" >
+					 <span class="window-icon"></span>
+				<div style='width:670px; height: 660px; background: rgb(243,243,243);'>
+				<img src="http://killerqueenblog.com/wp-content/uploads/2013/03/elefriends-663x189.jpg" style='margin-top:100px;'>
+				</div>
+			</a>
+
+			<div class="bottom-slide">
+
+				
+
+					<p class='descript' style='margin-top:0px;'>
+						Feeling really low? Don't feel alone. </br>	Share your woes confidentially online with MIND's elefriends.
+					</p>
+			</div>
+		</section>
+	</article>
+<!-- !EleFriends -->
+
+	<!-- Sisyphus Description -->
+	<article class="item-flush Steps-item isotope-item isotope-hidden">
+	
+		<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
+		
+ 
+		
+			<a href="http://tinybuddha.com/blog/50-things-you-can-control-right-now/" target="_blank" >
+					 <span class="window-icon"></span>
+			
+				<img src="http://family.freeformers.com/max/whitedog/img/sisyphus.png" style='height: 365px;'>
+			
+			</a>
+
+			<div class="bottom-slide">
+
+			
+
+					<p class='descript' style='margin-top:0px;'>
+						There are lots of things we cannot control.<br>
+						
+						In times of over-complexity, focussing on the simple things we can control is key.
+						
+					</p>
+			
+			</div>
+
+		</section>
+		</article>
+	<!-- / Sisyphus Description -->	
+
+	
+	
+
+	<!-- Depression Self-Assessment -->
+	
+
+	<article class="item-flush Steps-item isotope-item isotope-hidden">
+	
+		<section class="promo-content height2 flush-grid-4" style="cursor: pointer;">
+		<a href="http://www.nhs.uk/Tools/Pages/depression.aspx" target="_blank" >
+		
+		    <div class="hover panel">
+		           <div class="front">
+					   <div class="pad">
+          
+         
+					             <h1 class='frontTitle' style='  width:300px;'>Depression Self-Assessment</h1>
+          
+					               <img src="http://www.angeranddepressionhelp.com/wp-content/uploads/2012/04/anger-and-depression.jpg" alt="logo front" style='height: 365px; width: 550px; margin-left: -100px;'/>
+					           </div>
+					       </div>
+					       <div class="back">
+					           <div class="pad">
+         
+					             <div class='backCover'></div>
+     
+					             <div class='backText'>
+					              <h1 style='color: white; '>Depression Self-Assessment</h1>
+					             <h4 style='color: white;'>
+					               The Self-Assessment Test  will help you to assess whether you could be suffering from depression. <br>
+					   						It is not intended to replace a consultation with a GP.
+					             </h4>
+            
+					             <div class='backWindow'> 
+					            <div class='backWindowImage'>
+								</div>
+					            </div>
+								 
+					              </div> 
+            
+					               <img src="http://www.angeranddepressionhelp.com/wp-content/uploads/2012/04/anger-and-depression.jpg" alt="logo back" style='height: 365px; width: 550px; margin-left: -100px;' />
+					           </div>
+		           </div>
+		       </div> 
+		
+		
+			
+			
+			
+				
+			</a>
+
+		</section>
+		</article>
+		<!-- /Depression Self-Assessment -->
+		
+		
+		<!-- Find Councelling -->
+	
+
+		<article class="item-flush Steps-item isotope-item isotope-hidden">
+	
+			<section class="promo-content height2 flush-grid-4" style="cursor: pointer;">
+		
+				<a href="http://www.nhs.uk/Service-Search/Counselling-NHS-(IAPT)-services/LocationSearch/396" target="_blank" >
+		
+				    <div class="hover panel">
+				           <div class="front">
+							   <div class="pad">
+          
+         
+							             <h1 class='frontTitle' style='  width:300px;'>Counselling</h1>
+          
+							               <img src="http://family.freeformers.com/max/whitedog/img/counselling.png" alt="logo front" style='height: 365px;
+width: 450px; margin-left: -70px;'/>
+							           </div>
+							       </div>
+							       <div class="back">
+							           <div class="pad">
+         
+							             <div class='backCover'></div>
+     
+							             <div class='backText'>
+							              <h1 style='color: white; '>Counselling</h1>
+							             <h4 style='color: white;'>
+				 							Counselling is a type of talking therapy where a person talks to a counsellor about their problems. <br>
+				 							They can help you deal with any negative thoughts and feelings that you have.
+							               
+							             </h4>
+            
+							             <div class='backWindow'> 
+							            <div class='backWindowImage'>
+										</div>
+							            </div>
+								 
+							              </div> 
+            
+							               <img src="http://family.freeformers.com/max/whitedog/img/counselling.png" alt="logo back" style='height: 365px;
+width: 450px; margin-left: -70px;'/>
+							           </div>
+				           </div>
+				       </div> 
+		
+		
+			
+			
+			
+				
+					</a>
+		
+
+			</section>
+			</article>
+			<!-- /Find Councelling -->
+		
+	
+	<!-- StereoMood Melancholy -->
+	
+
+	<article class="item-flush Steps-item isotope-item isotope-hidden">
+	
+		<section class="promo-content height2 flush-grid-4" style="cursor: pointer;">
+			
+			
+				<a href="http://www.nhs.uk/Service-Search/Counselling-NHS-(IAPT)-services/LocationSearch/396" target="_blank" >
+		
+				    <div class="hover panel">
+				           <div class="front">
+							   <div class="pad">
+          
+         
+							             <h1 class='frontTitle' style='  width:300px;'>Counselling</h1>
+         								   <div style='position: absolute; width:670px; height: 660px; background: white;'>
+							               		<img src="http://www.italianangels.net/public/upload//Loghi_Aziende/stereomood%20logo.png" alt="logo front" style="height: 120px; width: 300px; margin-left: -350px;margin-top: 110px;">
+										   </div>
+										   
+							       </div>
+							       </div>
+							       <div class="back">
+							           <div class="pad">
+         
+							             <div class='backCover'></div>
+     
+							             <div class='backText'>
+							              <h1 style='color: white; '>Stereomood</h1>
+							             <h4 style='color: white;'>
+				 							In the dumps? </br>
+											Here's some music to help your mood.
+							             </h4>
+            
+							             <div class='backWindow'> 
+							            <div class='backWindowImage'>
+										</div>
+							            </div>
+								 
+							              </div> 
+            
+							               <img src="http://www.italianangels.net/public/upload//Loghi_Aziende/stereomood%20logo.png" alt="logo front" style="height: 120px; width: 300px; margin-left: -350px;margin-top: 110px;">
+							           </div>
+				                </div>
+				          </div> 
+					  </a>
+					
+					
+			
+			<!--
+			<div class='moodShow'></div>
+		
+	
+			
+		<div class='moodCover'>
+			<a>
+				<div style='position: absolute; width:670px; height: 660px; background: white;'>
+					
+		    		
+					<img src="http://www.italianangels.net/public/upload//Loghi_Aziende/stereomood%20logo.png" style='margin-top:40px'>
+		
+				</div>	
+			
+		        <span class="play-icon btn1 moodMusic" id='testButton'></span>
+				<div class="bottom-slide">		
+			    <p class='descript'> In the dumps? Here's some music to help your mood. </p>
+				</div>
+			</a>
+		</div>
+       -->
+		</section>
+		</article>
+		<!-- /Stereomood Melancholy -->
+		
+		<!-- Ways to get over a bad mood -->
+	
+
+		<article class="item-flush Steps-item isotope-item isotope-hidden">
+	
+			<section class="promo-content height2 flush-grid-4" style="cursor: pointer;">
+		
+		
+		
+				<a href="http://www.nhs.uk/Tools/Pages/depression.aspx" target="_blank" >
+						 <span class="window-icon"></span>
+			
+					<img src="http://tn.loljam.com/7/preview/8934.jpg" style='height: 365px;'>
+			
+				</a>
+
+				<div class="bottom-slide">
+
+				
+
+						<p class='descript' style='margin-top:0px;'>
+							Depression Self-Assessment Test  will help you to assess whether you could be suffering from depression. <br>
+							It is not intended to replace a consultation with a GP. 
+						</p>
+				</div>
+			
+
+			</section>
+			</article>
+			<!-- /Ways to get over a bad mood -->
+			
+
+<!-- /MISERABLE -->
+
+<!-- UNHAPPY -->
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233568" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(480px, 366px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height2 flush-grid-4">
+		<a target="">
+			
+			<div class='pauseButton' id='stopSound'></div>
+  
+			<iframe id="so" width="640px" height="640px" scrolling="no" src="http://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites" frameborder="0" ></iframe>
+	
+			
+			<span class="play-icon playButton" id="playSound"></span>
+		</a>
+		<div class="bottom-slide" style="bottom: -40px;">
+			<a>
+				<p class='descript'>
+				SoundCloud Placeholder
+				</p>
+			</a>
+		</div>
+	</section>
+</article>
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233568" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(480px, 366px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height2 flush-grid-4">
+		
+		
+		
 			<a href="javascript:void callPlayer(&quot;whateverID&quot;,&quot;playVideo&quot;)">	
 				<span class="play-icon" id='playYouTube'></span>
-			</a> &bull;
+			</a>
 			
-			 <a href="javascript:void callPlayer(&quot;whateverID&quot;,&quot;pauseVideo&quot;)">Pause</a> &bull; <a href="javascript:void callPlayer(&quot;whateverID&quot;,&quot;stopVideo&quot;)">Stop</a> - Hover over the links to see the called function
-			<br />
 			<div id="whateverID">
-				<iframe width="640" height="390" frameborder="0" title="YouTube video player" type="text/html" src="http://www.youtube.com/embed/CVW_IE1nsKE?enablejsapi=1">
+<img src='http://www.weekendnotes.com/im/005/07/meditation-courses1.jpg' style='height: 385px; width: 100%;' class='videoCover'>				
+<iframe width="660" height="450" frameborder="0" title="YouTube video player" type="text/html" src="http://www.youtube.com/embed/CVW_IE1nsKE?enablejsapi=1" style="margin-top: -40px;">
 					
 				</iframe>
 			</div>
@@ -382,125 +899,178 @@ function callPlayer(frame_id, func, args) {
 				</p>
 		
 			</div>
-		</section>
-	</article>
-	
-	
-	
-	
-	<article class="item-flush Steps-item isotope-item isotope-hidden">
-		<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
-			<a target="">
-				
-				<div class='pauseButton' id='stopSound'></div>
-      
-				<iframe id="so" width="640px" height="640px" scrolling="no" src="http://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites" frameborder="0" ></iframe>
 		
-				
-				<span class="play-icon playButton" id="playSound"></span>
-			</a>
-			<div class="bottom-slide" style="bottom: -40px;">
-				<a>
-					<p class='descript'>
-					FourTet placeholder
-					</p>
-				</a>
+		
+	</section>
+</article>
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233568" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(480px, 366px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height2 flush-grid-4">
+	
+		<a href="http://elefriends.org.uk/" target="_blank" >
+				 <span class="window-icon"></span>
+			<div style='width:670px; height: 660px; background: rgb(243,243,243);'>
+			<img src="http://killerqueenblog.com/wp-content/uploads/2013/03/elefriends-663x189.jpg" style='margin-top:100px;'>
 			</div>
-		</section>
-	</article>
+		</a>
+
+		<div class="bottom-slide">
+
+			<a href="http://elefriends.org.uk/" target='_blank'>
+
+				<p class='descript'>Feeling really low? Don't feel alone. Share your woes with others.</p></a>
+		</div>
 	
+	</section>
+</article>
+
+
+
+
+
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233568" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(480px, 366px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height2 flush-grid-4" style="cursor: pointer;">
+		
+		<div class='moodShow'></div>
+		
 	
-	<article class="item-flush Steps-item isotope-item isotope-hidden">
-		<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
-			<a href="http://elefriends.org.uk/" target="_blank" >
-				<div style='width:670px; height: 660px; background: rgb(243,243,243);'>
-				<img src="http://killerqueenblog.com/wp-content/uploads/2013/03/elefriends-663x189.jpg" style='margin-top:100px;'>
-				</div>
+			
+	<div class='moodCover'>
+		<a>
+
+	
+	<a href="http://www.stereomood.com/" target="_blank" >
+			 <span class="window-icon" style='opacity: 0.5;'></span>
+		<div style='width:670px; height: 660px; background: rgb(243,243,243);'>
+		<img src="http://www.italianangels.net/public/upload//Loghi_Aziende/stereomood%20logo.png" width='100%'>
+		</div>
+	</a>
+	<div class="bottom-slide">
+
+			<p class='descript' style='margin-top:0px;'>
+			Generate a playlist based on your mood.
+			</p>
+
+	</div>
+	
+
+	</section>
+	
+</article>
+
+
+
+
+
+
+
+
+
+
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233568" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(480px, 366px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height2 flush-grid-4">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentData01.png">
+	</section>
+</article>
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233561" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(160px, 183px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height1 flush-grid-2">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall01.png">
+	</section>
+</article>
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233572" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(160px, 366px, 0px) scale3d(0.001, 0.001, 1);"><section class="promo-content height1 flush-grid-2">
+	<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall02.png">
+</section>
+</article>
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233571" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 366px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height1 flush-grid-2">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall03.png">
+	</section>
+</article>
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233568" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(480px, 366px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height2 flush-grid-4">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentData02.png">
+	</section>
+</article>
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233570" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(320px, 366px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height1 flush-grid-2">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall07.png">
+	</section>
+</article>
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233567" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(1120px, 366px, 0px) scale3d(0.001, 0.001, 1);"><section class="promo-content height1 flush-grid-2">
+	<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall04.png">
+</section>
+</article>
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233566" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 549px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height1 flush-grid-2">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall05.png">
+	</section>
+</article>
+
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233565" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(160px, 549px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height1 flush-grid-2">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall06.png">
+	</section>
+</article>
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233574" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(320px, 549px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height1 flush-grid-2">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall08.png">
+	</section>
+</article>
+
+
+<!-- Boss Kill Description -->
+<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233574" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(320px, 549px, 0px) scale3d(0.001, 0.001, 1);">
+	<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
+		<a href="http://stressreliefpig.com/uploads/woodoo_boss.swf" target="_blank" >
+				 <span class="window-icon" style='opacity: 0.5;'></span>
+			<div style='width:670px; height: 660px; background: rgb(243,243,243);'>
+			<img src="http://education2.freeformers.com/maxbye/whitedog/img/vodooBoss.png">
+			</div>
+		</a>
+		<div class="bottom-slide">
+			
+				<p class='descript'>Someone pissing you off? Beat the shit out of this doll.</p>
+		
+		</div>
+	</section>
+</article>
+<!-- /Boss Kill Description -->
+
+	<!-- YouTube Description -->
+	<article class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233574" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(320px, 549px, 0px) scale3d(0.001, 0.001, 1);">
+		<section class="promo-content height2 flush-grid-8">
+		
+			<a href="javascript:void callPlayer(&quot;whateverID&quot;,&quot;playVideo&quot;)">	
+				<span class="play-icon" id='playYouTube'></span>
 			</a>
+			
+			<div id="whateverID">
+<img src='http://www.weekendnotes.com/im/005/07/meditation-courses1.jpg' style='height: 385px; width: 100%;' class='videoCover'>				
+<iframe width="660" height="450" frameborder="0" title="YouTube video player" type="text/html" src="http://www.youtube.com/embed/CVW_IE1nsKE?enablejsapi=1" style="margin-top: -40px;">
+					
+				</iframe>
+			</div>
+
 			<div class="bottom-slide">
-				<a href="http://elefriends.org.uk/" target='_blank'>
-					<p class='descript'>Feeling really low? Don't feel alone. Share your woes with others.</p></a>
+		
+				<p class='descript'>
+				Let go of your anxiety, stress, unhappiness with a guided meditation.
+				</p>
+		
 			</div>
 		</section>
 	</article>
+	
 
 
-
-
-
-
-
-</div>
-
-
-
-
-<!-- THIS IS MEDIUM -->
-
-
-
-
-
-
-
-
-
-<article data-grid="4" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233568" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(480px, 366px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height2 flush-grid-4">
-		<img src="./Lexus_files/Priority_1_images_02_tcm880-1233541.jpg" height="366" width="320">
-	</section>
-</article>
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233561" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(160px, 183px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_01_tcm880-1233535.jpg" height="184" width="160">
-	</section>
-</article>
-
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233572" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(160px, 366px, 0px) scale3d(0.001, 0.001, 1);"><section class="promo-content height1 flush-grid-2">
-	<img src="./Lexus_files/Priority_2_image_03_tcm880-1233544.jpg" height="184" width="160">
-</section>
-</article>
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233571" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 366px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_04_tcm880-1233543.jpg" height="184" width="160">
-	</section>
-</article>
-<article data-grid="4" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233731" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(800px, 366px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height2 flush-grid-4">
-		<img src="./Lexus_files/Priority_1_images_01_tcm880-1233532.jpg" height="366" width="320">
-	</section>
-</article>
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233570" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(320px, 366px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_05_tcm880-1233542.jpg" height="184" width="160">
-	</section>
-</article>
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233567" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(1120px, 366px, 0px) scale3d(0.001, 0.001, 1);"><section class="promo-content height1 flush-grid-2">
-	<img src="./Lexus_files/Priority_2_image_07_tcm880-1233540.jpg" height="184" width="160">
-</section>
-</article>
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233566" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 549px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_08_tcm880-1233539.jpg" height="184" width="160">
-	</section>
-</article>
-
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233565" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(160px, 549px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_09_tcm880-1233538.jpg" height="184" width="160">
-	</section>
-</article>
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233574" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(320px, 549px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_12_tcm880-1233546.jpg" height="184" width="160">
-	</section>
-</article>
-
-<article data-grid="2" class="item-flush SportsExcellence-item no-hover isotope-item isotope-hidden" data-id="tcm8801233573" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(1120px, 549px, 0px) scale3d(0.001, 0.001, 1);">
-	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_13_tcm880-1233545.jpg" height="184" width="160">
-	</section>
-</article>
+<!-- /UNHAPPY -->
+<!-- MEDIUM -->
 
 <article data-grid="8" class="item-flush cnn-item isotope-item isotope-hidden" data-id="CNNEpisode1" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(320px, 0px, 0px) scale3d(0.001, 0.001, 1);">
 	<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
@@ -516,9 +1086,12 @@ function callPlayer(frame_id, func, args) {
 		</div>
 	</section>
 </article>
+
+
+<!-- TO API -->
 <article data-grid="2" class="item-flush cnn-item no-hover isotope-item isotope-hidden" data-id="tcm8801234854" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(160px, 183px, 0px) scale3d(0.001, 0.001, 1);">
 	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_02_tcm880-1234821.jpg" height="184" width="160">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall01.png" height="184" width="160">
 	</section>
 </article>
 
@@ -544,19 +1117,26 @@ function callPlayer(frame_id, func, args) {
 </article>
 <article data-grid="2" class="item-flush cnn-item no-hover isotope-item isotope-hidden" data-id="tcm8801234855" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(960px, 183px, 0px) scale3d(0.001, 0.001, 1);">
 	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_02_tcm880-1234821.jpg" height="184" width="160">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/DemoContent09.jpg" height="184" width="160">
 	</section>
 </article>
 <article data-grid="2" class="item-flush cnn-item no-hover isotope-item isotope-hidden" data-id="tcm8801234856" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(960px, 366px, 0px) scale3d(0.001, 0.001, 1);"><section class="promo-content height1 flush-grid-2">
-	<img src="./Lexus_files/Priority_2_image_03_tcm880-1234822.jpg" height="184" width="160">
+	<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall03.png" height="184" width="160">
 </section>
 </article>
 
 <article data-grid="2" class="item-flush cnn-item no-hover isotope-item isotope-hidden" data-id="tcm8801234857" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(1120px, 366px, 0px) scale3d(0.001, 0.001, 1);">
 	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_04_tcm880-1234823.jpg" height="184" width="160">
+		<img src="http://education2.freeformers.com/maxbye/whitedog/img/contentSmall04.png" height="184" width="160">
 	</section>
 </article>
+
+<!-- /TO API -->
+
+
+
+
+
 
 <article data-grid="8" class="item-flush cnn-item isotope-item isotope-hidden" data-id="CNNEpisode3" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(320px, 732px, 0px) scale3d(0.001, 0.001, 1);">
 	<section class="promo-content height2 flush-grid-8" style="cursor: pointer;">
@@ -576,7 +1156,7 @@ function callPlayer(frame_id, func, args) {
 
 <article data-grid="2" class="item-flush cnn-item no-hover isotope-item isotope-hidden" data-id="tcm8801238588" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(960px, 549px, 0px) scale3d(0.001, 0.001, 1);">
 	<section class="promo-content height1 flush-grid-2">
-		<img src="./Lexus_files/Priority_2_image_18_tcm880-1238583.jpg" height="184" width="160">
+		<img src="./Lexus_files/Priority_2_image_06_tcm880-1234831.jpg" height="184" width="160">
 	</section>
 </article>
 <article data-grid="2" class="item-flush cnn-item no-hover isotope-item isotope-hidden" data-id="tcm8801234858" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(1120px, 549px, 0px) scale3d(0.001, 0.001, 1);">
@@ -683,6 +1263,12 @@ function callPlayer(frame_id, func, args) {
 </section>
 </article>
 
+
+<!-- /MEDIUM -->
+
+
+
+<!-- SMILE -->
 <article data-grid="4" class="item-flush LexusShortFilms-item isotope-item isotope-hidden" data-id="ChanChungKi" style="opacity: 0; position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(480px, 0px, 0px) scale3d(0.001, 0.001, 1);">
 	<section class="promo-content height2 flush-grid-4" style="cursor: pointer;">
 		<a class="ajax share-path" target="" href="http://www.lexus.co.uk/amazing-in-motion/short-films/chan-chung-ki.tmex">
@@ -856,9 +1442,6 @@ function callPlayer(frame_id, func, args) {
     </div>
     </form>
 
-    <script src="./Lexus_files/jquery.min.js"></script>
-    <script>        window.jQuery || document.write('<script src="/glb/js/libs/jquery-1.7.1.min.js"><\/script>')</script>   
-        
 
 
     <script src="./Lexus_files/js.combiner"></script>
@@ -881,6 +1464,7 @@ function callPlayer(frame_id, func, args) {
 	
 	
 	<script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.js"></script>
+	
 	<script type="text/javascript">
 
 	$(function() {
